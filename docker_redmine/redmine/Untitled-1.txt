@@ -1,0 +1,25 @@
+ db:
+        image: mysql:5.5
+        container_name: mysql
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: teste1234
+        volumes:
+          - mysql_data:/var/lib/mysql
+        ports:
+          - "3306:3306"
+
+  redmine:
+    image: redmine
+    container_name: redmine
+    restart: always
+    ports:
+      - 8080:3000
+    environment:
+      REDMINE_DB_MYSQL: mysql
+      REDMINE_DB_USERNAME: root
+      REDMINE_DB_PASSWORD: teste1234
+      REDMINE_DB_DATABASE: redmine_db
+      REDMINE_DB_ENCODING: utf8
+      http_proxy: http://192.168.1.1:3128
+      https_proxy: http://192.168.1.1:3128
