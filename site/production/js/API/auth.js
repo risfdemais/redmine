@@ -7,7 +7,7 @@ fazer logout
 let urlRedmine = 'http://localhost:8080'
 let urlProd = ''
 let urlSiteDev = 'http://localhost:80/redmine/site/production'
-const config = JSON.parse(import("./config.json"))
+//const config = JSON.parse(import("./config.json"))
 export function login_by_apiId(apiId, redirect = '') {
     $.ajax({
         type: "get",
