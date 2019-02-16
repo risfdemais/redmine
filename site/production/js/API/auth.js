@@ -4,25 +4,21 @@ Verificar se existe usuário em cache
 retornar o data do usuário logado
 fazer logout
 */
-let urlRedmine = ''
+let urlRedmine = 'http://localhost:8080'
 let urlProd = ''
 let urlSiteDev = 'http://localhost:80/redmine/site/production'
-const config = $.getJSON("./config.json",
-    function (data) {
-        alert(JSON.stringify(data))
-    }
-);
+const config = JSON.parse(import("./config.json"))
 export function login_by_apiId(apiId, redirect = '') {
     $.ajax({
         type: "get",
-        url: urlDev + "/users/current.json?key=" + apiId,
+        url: urlRedmine + "/users/current.json?key=" + apiId,
         success: function (response) {
             if (response.user.api_key == apiId)
             {
                 sessionStorage.setItem("apiId", apiId);
                 if (redirect != '')
                 {
-                    window.location.replace(domain + redirect);
+                    window.location.replace(urlSiteDev + redirect);
                 }
                 else
                 {
@@ -40,7 +36,7 @@ export function login_by_apiId(apiId, redirect = '') {
 export function sessionAuth(redirect = '') {
     if(sessionStorage.getItem("apiId") == '')
     {
-        window.location.replace(domain + "login.html");
+        window.location.replace(urlSiteDev + "login.html");
     }
     else
     {
@@ -51,7 +47,7 @@ export function sessionAuth(redirect = '') {
 export function userData(apiId) {
     $.ajax({
         type: "get",
-        url: urlDev + "/users/current.json?key=" + apiId,
+        url: urlRedmine + "/users/current.json?key=" + apiId,
         success: function (response) {
             return response
         }
