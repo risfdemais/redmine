@@ -16,7 +16,7 @@
 
 
 $(document).ready(function () {
-    let Auth = import('./auth');
+    let Auth = import('./auth.js');
     $('#btn_login').click(function () {  
         const apiId = $('#api_id').val();
         alert(apiId)
