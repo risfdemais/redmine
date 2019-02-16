@@ -4,10 +4,15 @@ Verificar se existe usuário em cache
 retornar o data do usuário logado
 fazer logout
 */
-const domain = 'file:///C:/Users/rogerio.santos/Documents/API%20REDMINE/gentelella-master/'
-const urlProd = ''
-const urlDev = 'http://localhost:8080'
-function login_by_apiId(apiId, redirect = '') {
+let urlRedmine = ''
+let urlProd = ''
+let urlSiteDev = 'http://localhost:80/redmine/site/production'
+const config = $.getJSON("./config.json",
+    function (data) {
+        alert(JSON.stringify(data))
+    }
+);
+export function login_by_apiId(apiId, redirect = '') {
     $.ajax({
         type: "get",
         url: urlDev + "/users/current.json?key=" + apiId,
@@ -32,7 +37,7 @@ function login_by_apiId(apiId, redirect = '') {
     });
 }
 
-function sessionAuth(redirect = '') {
+export function sessionAuth(redirect = '') {
     if(sessionStorage.getItem("apiId") == '')
     {
         window.location.replace(domain + "login.html");
@@ -43,7 +48,7 @@ function sessionAuth(redirect = '') {
     }
 }
 
-function userData(apiId) {
+export function userData(apiId) {
     $.ajax({
         type: "get",
         url: urlDev + "/users/current.json?key=" + apiId,
@@ -53,6 +58,6 @@ function userData(apiId) {
     });
 }
 
-function logout(apiId) {
+export function logout(apiId) {
     sessionStorage.setItem("apiId", '');
 }

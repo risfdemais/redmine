@@ -1,5 +1,8 @@
 {
     "domain": {
-        "mainDomain": "file:///C:/Users/rogerio.santos/Documents/API%20REDMINE/gentelella-master/"
+        "urlSiteDev": "http://localhost:80/redmine/site/production",
+        "urlSiteProd": "",
+        "urlRedmineDev": "http://localhost:8080",
+        "urlRedmineProd": ""
     }
 }
