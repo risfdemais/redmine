@@ -19,6 +19,6 @@ $(document).ready(function () {
     $('#btn_login').click(function () {  
         const apiId = $('#api_id').val();
         alert(apiId)
-        Auth.login_by_apiId(apiId, 'production/index.html')
+        login_by_apiId(apiId, 'production/index.html')
     });
 });

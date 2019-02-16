@@ -8,7 +8,7 @@ let urlRedmine = 'http://localhost:8080'
 let urlProd = ''
 let urlSiteDev = 'http://localhost:80/redmine/site/production'
 //const config = JSON.parse(import("./config.json"))
-export function login_by_apiId(apiId, redirect = '') {
+function login_by_apiId(apiId, redirect = '') {
     $.ajax({
         type: "get",
         url: urlRedmine + "/users/current.json?key=" + apiId,
@@ -33,7 +33,7 @@ export function login_by_apiId(apiId, redirect = '') {
     });
 }
 
-export function sessionAuth(redirect = '') {
+function sessionAuth(redirect = '') {
     if(sessionStorage.getItem("apiId") == '')
     {
         window.location.replace(urlSiteDev + "login.html");
@@ -44,7 +44,7 @@ export function sessionAuth(redirect = '') {
     }
 }
 
-export function userData(apiId) {
+function userData(apiId) {
     $.ajax({
         type: "get",
         url: urlRedmine + "/users/current.json?key=" + apiId,
@@ -54,6 +54,6 @@ export function userData(apiId) {
     });
 }
 
-export function logout(apiId) {
+function logout(apiId) {
     sessionStorage.setItem("apiId", '');
 }
