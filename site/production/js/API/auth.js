@@ -11,6 +11,7 @@ let urlSiteDev = 'http://localhost:80/redmine/site/production'
 function login_by_apiId(apiId, redirect = '') {
     $.ajax({
         type: "get",
+        crossDomain: false,
         url: urlRedmine + "/users/current.json?key=" + apiId,
         success: function (response) {
             if (response.user.api_key == apiId)
@@ -47,6 +48,7 @@ function sessionAuth(redirect = '') {
 function userData(apiId) {
     $.ajax({
         type: "get",
+        crossDomain: false,
         url: urlRedmine + "/users/current.json?key=" + apiId,
         success: function (response) {
             return response
